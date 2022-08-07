@@ -1,21 +1,8 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/includes/app.php';
 
-use App\Utils\View;
 use \App\Http\Router;
-use \WilliamCosta\DotEnv\Environment;
-
-//CARREGA VARIÁVEIS DE AMBIENTE
-Environment::load(__DIR__);
-
-//DEFINE A CONSTANTE DE URL DO PROJETO
-define('URL', getenv('URL'));
-
-//DEFINE O VALOR PADRÃO DAS VARIÁVEIS
-View::init([
-    'URL' => URL,
-]);
 
 //INICIA O ROUTER
 $obRouter = new Router(URL);
