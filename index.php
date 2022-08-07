@@ -2,14 +2,22 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use \App\Controller\Pages\Home;
+use App\Utils\View;
 use \App\Http\Router;
 
 define('URL', 'http://localhost/mvc-php');
 
+//DEFINE O VALOR PADRÃO DAS VARIÁVEIS
+View::init([
+    'URL' => URL,
+]);
+
+//INICIA O ROUTER
 $obRouter = new Router(URL);
-var_dump($obRouter);
 
-exit;
+//INCLUI AS ROTAS DE PÁGINAS
+include __DIR__ . '/routes/pages.php';
 
-echo Home::getHome();
+//IMPRIME O RESPONSE DA ROTA
+$obRouter->run()
+    ->sendResponse();
